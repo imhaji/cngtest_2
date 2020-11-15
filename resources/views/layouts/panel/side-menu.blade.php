@@ -109,7 +109,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item text-pink">
+                {{-- <li class="nav-item text-pink">
                     <a class="nav-link" data-toggle="collapse" data-target="#reports-submenu" href="#">
                         <i class="fas fa-chart-bar"></i>
                         گزارشات </a>
@@ -129,7 +129,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" data-target="#settings-submenu" href="#">
                         <i class="fas fa-cog"></i>
@@ -141,14 +141,14 @@
                                     معرفی کاربران</a>
                             </li>
 
-                            <li class="nav-item">
+{{--                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     معرفی پیمانکاران</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     معرفی کارگاه ها</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     سطوح دسترسی</a>
