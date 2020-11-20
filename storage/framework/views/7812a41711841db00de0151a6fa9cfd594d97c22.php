@@ -14,7 +14,7 @@ $stuff_packes = array();
 $stuffs = array();
 if (count($temp_lists)) {
 
-    
+
 
     foreach ($temp_lists as $stuff_item) {
 
@@ -38,7 +38,9 @@ if (count($temp_lists)) {
 }
 ?>
 <div class="stuff-header">
-    <form action="<?php echo e(Route('createTransfer')); ?>" method="POST" class="form-horizontal col-md-12">
+    <?php echo e(Route('createTransfer')); ?>
+
+    <form action="" method="POST" id="transfer-form" class="form-horizontal col-md-12">
     <div class="header row p-3 text-center outset bg-lightgreen">
         <h3 class="display-6">
             <div class="i fas fa-new"></div>
@@ -101,8 +103,26 @@ if (count($temp_lists)) {
                         </div>
                     </div>
                 </div>
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="temp-reciept-stuff-radion" class="form-label">
+                                    <input class="form-control" value="0" type="radio" name="stuff-type-radio"
+                                           id="temp-reciept-stuff-radion" checked>اضافه کردن کالا به لیست
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="temp-reciept-stuffpack-radion" class="form-label">
+                                    <input class="form-control" value="1" type="radio" name="stuff-type-radio"
+                                           id="temp-reciept-stuffpack-radion">اضافه کردن مجموعه به لیست
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 <?php if(count($stuffs)): ?>
-                    <div class="row">
+                    <div class="row" id="stuff_div">
                         <div class="col-md-4 border ">
                             <div class="form-group select-stuff-or-stuffpack">
                                 <div class="" id="select-stuff-to-add-trnsfer">
@@ -117,6 +137,8 @@ if (count($temp_lists)) {
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -146,7 +168,7 @@ if (count($temp_lists)) {
                     <div class="alert alert-warning">هیچ کالایی ثبت نشده است</div>
                 <?php endif; ?>
                 <?php if(count($stuff_packes)): ?>
-                    <div class="row">
+                    <div class="row" id="stuffpack_div" style="display: none">
                         <div class="col-md-4 border ">
                             <div class="form-group select-stuff-or-stuffpack">
                                 <div class="" id="select-stuff-to-add-trnsfer">
@@ -281,7 +303,7 @@ if (count($temp_lists)) {
             <div class="row">
 
                 <div class="col">
-                    <button class="btn btn-success hidden" type="submit" id="insert-new-reciept-save-btn-trnsfer">
+                    <button class="btn btn-success hidden" type="button" id="insert-new-reciept-save-btn-trnsfer">
                         <i class="fas fa-save"></i>
                         ثبت
                     </button>
@@ -302,4 +324,21 @@ if (count($temp_lists)) {
     </form>
 </div>
 <script src="<?php echo e(asset('js/transfer-stuff/transfer.js')); ?>"></script>
+
+<script type="text/javascript">
+    $(document).on('change', 'input[name="stuff-type-radio"]', function (e) {
+        $('#stuff_div').fadeOut('fast');
+        $('#stuffpack_div').fadeOut('fast');
+
+        is_stuffpack = $('input[name="stuff-type-radio"]:checked').val();
+        if(is_stuffpack == 1)
+            $('#stuffpack_div').fadeIn();
+        else
+            $('#stuff_div').fadeIn();
+    });
+
+    $('#insert-new-reciept-save-btn-trnsfer').click(function () {
+        alert('sdj');
+    });
+</script>
 <?php /**PATH C:\wamp\www\cngtest_2\resources\views/stuff-transfer/transfer-stuff.blade.php ENDPATH**/ ?>

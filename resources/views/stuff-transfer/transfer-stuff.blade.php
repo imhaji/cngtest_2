@@ -14,7 +14,7 @@ $stuff_packes = array();
 $stuffs = array();
 if (count($temp_lists)) {
 
-    
+
 
     foreach ($temp_lists as $stuff_item) {
 
@@ -101,8 +101,26 @@ if (count($temp_lists)) {
                         </div>
                     </div>
                 </div>
+                    <div class="row"> {{-- انتخاب کالا یا مجموعه --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="temp-reciept-stuff-radion" class="form-label">
+                                    <input class="form-control" value="0" type="radio" name="stuff-type-radio"
+                                           id="temp-reciept-stuff-radion" checked>اضافه کردن کالا به لیست
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="temp-reciept-stuffpack-radion" class="form-label">
+                                    <input class="form-control" value="1" type="radio" name="stuff-type-radio"
+                                           id="temp-reciept-stuffpack-radion">اضافه کردن مجموعه به لیست
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 @if(count($stuffs))
-                    <div class="row">
+                    <div class="row" id="stuff_div">
                         <div class="col-md-4 border ">
                             <div class="form-group select-stuff-or-stuffpack">
                                 <div class="" id="select-stuff-to-add-trnsfer">
@@ -117,6 +135,8 @@ if (count($temp_lists)) {
                                         @endforeach
                                     </select>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -146,7 +166,7 @@ if (count($temp_lists)) {
                     <div class="alert alert-warning">هیچ کالایی ثبت نشده است</div>
                 @endif
                 @if(count($stuff_packes))
-                    <div class="row">
+                    <div class="row" id="stuffpack_div" style="display: none">
                         <div class="col-md-4 border ">
                             <div class="form-group select-stuff-or-stuffpack">
                                 <div class="" id="select-stuff-to-add-trnsfer">
@@ -302,3 +322,16 @@ if (count($temp_lists)) {
     </form>
 </div>
 <script src="{{ asset('js/transfer-stuff/transfer.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).on('change', 'input[name="stuff-type-radio"]', function (e) {
+        $('#stuff_div').fadeOut('fast');
+        $('#stuffpack_div').fadeOut('fast');
+
+        is_stuffpack = $('input[name="stuff-type-radio"]:checked').val();
+        if(is_stuffpack == 1)
+            $('#stuffpack_div').fadeIn();
+        else
+            $('#stuff_div').fadeIn();
+    });
+</script>

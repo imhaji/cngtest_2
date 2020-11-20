@@ -22,12 +22,12 @@ class InsertDefaultUsers extends Migration
 
 
         $roles = [
-            1 => ['admin', 'مدیر سایت'],
-            2 => ['itman', 'مسئول سایت'],
-            3 => ['contractor', 'پیمانکار'],
-            4 => ['workshop', 'کارگاه'],
-            5 => ['temp-store', 'انبار موقت'],
-            6 => ['store', 'انبار'],
+            1 => ['admin', 'مدیر سایت','1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21'],
+            2 => ['itman', 'مسئول سایت','13,14,15,16,17,18,19,20,21'],
+            3 => ['contractor', 'پیمانکار',''],
+            4 => ['workshop', 'کارگاه',''],
+            5 => ['temp-store', 'انبار موقت',''],
+            6 => ['store', 'انبار','1,2,3,4,5,6'],
         ];
 
         try {
@@ -37,6 +37,7 @@ class InsertDefaultUsers extends Migration
                     'password'  => Hash::make('123456789'),
                     'role'      => $key,
                     'title'     => $value[1],
+                    'access'    => $value[2],
                 ]);
             }
             return response()->json(['status' => 'success']);
